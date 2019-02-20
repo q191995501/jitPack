@@ -1,31 +1,28 @@
-apply plugin: 'java'
-apply plugin: 'maven'
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
 
-
-sourceCompatibility = 1.8 // java 8
-targetCompatibility = 1.8
-
-group = 'com.github.q191995501'
-
-android {
-    compileSdkVersion 28
-    sourceSets {
-        main {
-            jniLibs.srcDir(['src/main/jniLibs'])
-        }
+buildscript {
+    
+    repositories {
+        google()
+        jcenter()
     }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.1.2'
+        
 
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
 }
 
-dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.github.smart-fun:XmlToJson:1.4.4'
-}
-wrapper {
-    gradleVersion = "5.1.1"
-    distributionType = Wrapper.DistributionType.ALL
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url 'https://jitpack.io' }
+    }
 }
 
-repositories {
-    mavenCentral()
+task clean(type: Delete) {
+    delete rootProject.buildDir
 }

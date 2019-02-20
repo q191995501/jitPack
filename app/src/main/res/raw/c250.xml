@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Protocol>
+
+    <!--开启debug日志打印-->
+    <debug value="true" />
+    <!--帧头-->
+    <head value="9a"/>
+    <!--crc-->
+    <crc value="16"/>
+    <!--发送的频率，毫秒-->
+    <millisecond value="200"/>
+    <!--读取的频率-->
+    <readspeed value="10"/>
+    <!--串口路径-->
+    <serialport value="/dev/ttyS3"/>
+
+
+    <!---自定义标签   开始-->
+
+    <destiNode value="01"/>
+    <sourceNode value="0f"/>
+    <msgIndex value="00"/>
+    <msgRW value="01"/>
+    <!---自定义标签   结束-->
+
+
+
+    <!--模块-->
+    <function name="ATT" class="cn.wenhaha.serialport.processing.DefaultMsgProcessing" >
+        <!--标识-->
+        <mark value="01"/>
+        <!--需要自动发送数据，就加入该标签.number标识发送的次数，-1为无数次-->
+        <send value="00" number="-1"/>
+
+        <!---
+            自定义标签   开始
+            addLength 表示计算长度的时候加入该标签值的长度
+        -->
+
+        <msg value="01" addLength="true"/>
+        <!---自定义标签   结束-->
+    </function>
+
+
+
+    <!--发送的顺序-->
+    <structure>
+        head,destiNode,sourceNode,length,mark,msgIndex,msgRW,msg,function,crc
+    </structure>
+
+</Protocol>
+
+
+
+

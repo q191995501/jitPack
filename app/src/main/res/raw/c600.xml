@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Protocol>
+
+    <debug value="true" />
+    <head value="a6"/>
+    <crc value="16"/>
+    <!--发送的频率，毫秒-->
+    <millisecond value="200"/>
+    <readspeed value="200"/>
+    <serialport value="/dev/ttyS3"/>
+
+
+    <!-- 功能段  -->
+    <reserved value="00"/>
+
+    <!-- 地址段  -->
+    <constant value="10"/>
+
+
+    <!--
+      *******************************
+            工作管理组
+      *******************************
+     -->
+    <!--获取工作信息-->
+    <function name="GetWorkInfo"
+        index="mark"
+        handle="cn.wenhaha.myapplication.Test"
+        result="cn.wenhaha.myapplication.Test">
+        <mark value="09" addLength="true"/>
+        <send value="01" number="1"/>
+    </function>
+
+
+    <!--写死的-->
+    <structure>
+        head,constant,reserved,length,mark,function,crc
+    </structure>
+
+</Protocol>
+
+
+
+
